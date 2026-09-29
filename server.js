@@ -7,7 +7,7 @@ const multer = require('multer');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Konfigurasi Multer Upload Bukti TF
 const storage = multer.diskStorage({
@@ -447,6 +447,6 @@ app.get('/admin/logout', (req, res) => {
     req.session.destroy(() => res.redirect('/admin/login'));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 ZK Store aktif di http://localhost:${PORT}`);
 });
